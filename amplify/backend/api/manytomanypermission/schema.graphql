@@ -1,0 +1,47 @@
+type User
+  @model
+  @key(fields: ["username"])
+  @auth(
+    rules: [
+      { allow: owner, operations: [create, delete, update] }
+      { allow: private, operations: [read] }
+      { allow: public, operations: [read], provider: iam }
+    ]
+  ) {
+  username: String!
+  postLikes: [PostLike] @connection(keyName: "byUsername", fields: ["username"])
+}
+
+type Post
+  @model
+  @auth(
+    rules: [
+      { allow: owner, operations: [create, delete, update] }
+      { allow: private, operations: [read] }
+      { allow: public, operations: [read], provider: iam }
+    ]
+  ) {
+  id: ID!
+  body: String!
+  username: String!
+  user: User! @connection(fields: ["username"])
+  userLikes: [PostLike] @connection(keyName: "byPostId", fields: ["id"])
+}
+
+type PostLike
+  @model(queries: null)
+  @auth(
+    rules: [
+      { allow: owner, operations: [create, delete, update] }
+      { allow: private, operations: [read] }
+      { allow: public, operations: [read], provider: iam }
+    ]
+  )
+  @key(name: "byPostId", fields: ["postId", "username"])
+  @key(name: "byUsername", fields: ["username", "postId"]) {
+  id: ID!
+  postId: ID!
+  username: String!
+  post: Post! @connection(fields: ["postId"])
+  user: User! @connection(fields: ["username"])
+}

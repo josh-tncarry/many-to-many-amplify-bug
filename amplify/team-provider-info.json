@@ -1,0 +1,20 @@
+{
+  "dev": {
+    "awscloudformation": {
+      "AuthRoleName": "amplify-manytomanypermission-dev-194501-authRole",
+      "UnauthRoleArn": "arn:aws:iam::921789142659:role/amplify-manytomanypermission-dev-194501-unauthRole",
+      "AuthRoleArn": "arn:aws:iam::921789142659:role/amplify-manytomanypermission-dev-194501-authRole",
+      "Region": "us-east-1",
+      "DeploymentBucketName": "amplify-manytomanypermission-dev-194501-deployment",
+      "UnauthRoleName": "amplify-manytomanypermission-dev-194501-unauthRole",
+      "StackName": "amplify-manytomanypermission-dev-194501",
+      "StackId": "arn:aws:cloudformation:us-east-1:921789142659:stack/amplify-manytomanypermission-dev-194501/72fc87f0-3825-11eb-aabb-1291290b94c1",
+      "AmplifyAppId": "dldh8wydu1zxq"
+    },
+    "categories": {
+      "auth": {
+        "manytomany": {}
+      }
+    }
+  }
+}
